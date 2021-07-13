@@ -40,25 +40,28 @@ def play_game(lives):
         guessed_number = input("guess the number : ")
         if guessed_number in "3.quit":
             quitting()
-        guessed_number = int(guessed_number)
-        lowORhigh = "lower" if number < guessed_number else "higher"
-        alotOrlittle = "a lot " if number-guessed_number > 10 or number-guessed_number < -10 else "a little "
-        if number == guessed_number:
-            print("you guessed it right ^_^")
-            name = input("whats your name? ")
-            write_to_leaderboard(name, lives)
-            break
+        if not guessed_number.isnumeric():
+            print("not a number!!")
         else:
-            print(f"go {alotOrlittle}{lowORhigh}!!!") if lives > 1 else print(f"nice try the number is {number}")
-            if lives == 4:
-                print(devided_by_2)
-            elif lives == 3:
-                print(devided_by_3)
-            elif lives == 2:
-                print(devided_by_5)
-        lives -= 1
-        if lives > 0:
-            print(f"you have {lives} tries left")
+            guessed_number = int(guessed_number)
+            lowORhigh = "lower" if number < guessed_number else "higher"
+            alotOrlittle = "a lot " if number-guessed_number > 10 or number-guessed_number < -10 else "a little "
+            if number == guessed_number:
+                print("you guessed it right ^_^")
+                name = input("whats your name? ")
+                write_to_leaderboard(name, lives)
+                break
+            else:
+                print(f"go {alotOrlittle}{lowORhigh}!!!") if lives > 1 else print(f"nice try the number is {number}")
+                if lives == 4:
+                    print(devided_by_2)
+                elif lives == 3:
+                    print(devided_by_3)
+                elif lives == 2:
+                    print(devided_by_5)
+            lives -= 1
+            if lives > 0:
+                print(f"you have {lives} tries left")
 
 
 def write_to_leaderboard(name, score):
