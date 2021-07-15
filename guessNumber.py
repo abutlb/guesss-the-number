@@ -38,7 +38,7 @@ def play_game(lives):
     while lives > 0:
         print("******************************************")
         guessed_number = input("guess the number : ")
-        if guessed_number in "3.quit":
+        if guessed_number.lower() in "quit":
             quitting()
         if not guessed_number.isnumeric():
             print("not a number!!")
@@ -109,11 +109,11 @@ def quitting():
 
 while True:
     option_number = input(opening_msg).lower()
-    if option_number in "1play":
+    if option_number in "1.play":
         play_game(lives)
-    elif option_number in "2leaderboard":
+    elif option_number in "2.leaderboard":
         read_from_leaderboard()
-    elif option_number in "3quit":
+    elif option_number in "3.quit":
         quitting()
     else:
         print("not available option!!!")
