@@ -98,6 +98,7 @@ def read_from_leaderboard():
             for player in reader[0:5]:
                 print(f"{i}- {player['name']}  {player['score']}")
                 i += 1
+        csv_file.close()
 
 
 
